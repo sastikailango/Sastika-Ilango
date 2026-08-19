@@ -3,423 +3,882 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Sastika Ilango | Aerospace Engineer</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<title>Sastika Ilango | Aerospace FEA Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
   :root {
-    --bg: #000000;
-    --bg2: #0a0a0a;
-    --card: #111111;
-    --card2: #161616;
-    --border: #2a2a2a;
-    --text: #e8edf8;
-    --muted: #7a90b8;
-    --orange: #ff6b35;
-    --orange2: #ff9c70;
-    --cyan: #00d4ff;
-    --cyan2: #7df4ff;
-    --purple: #a855f7;
-    --purple2: #c084fc;
-    --yellow: #ffd93d;
-    --green: #4ade80;
+    --bg-primary: #f8f9fa;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #f0f2f5;
+    --text-primary: #1a1d23;
+    --text-secondary: #4a5568;
+    --text-muted: #718096;
+    --border: #e2e8f0;
+    --accent: #2c3e50;
+    --accent-light: #4a5f8a;
+    --accent-hover: #1e2e3f;
+    --success: #2d7a5e;
   }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  html { scroll-behavior:smooth; }
-  body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); line-height:1.65; letter-spacing:.01em; overflow-x:hidden; }
 
-  /* ── NAV ── */
-  nav {
-    position:fixed; top:0; width:100%; z-index:200;
-    background:rgba(4,8,26,0.88); backdrop-filter:blur(14px);
-    border-bottom:1px solid var(--border);
-    display:flex; align-items:center; justify-content:space-between;
-    padding:0 2.5rem; height:62px;
+  * { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
   }
-  .nav-logo { font-family:'Space Grotesk',sans-serif; font-weight:800; font-size:1.1rem; color:var(--cyan); letter-spacing:.15em; font-size:.95rem; text-transform:uppercase; }
-  .nav-links { display:flex; gap:1.8rem; list-style:none; }
-  .nav-links a { color:var(--muted); text-decoration:none; font-size:.83rem; font-weight:500; transition:color .2s; letter-spacing:.06em; text-transform:uppercase; font-size:.75rem; }
-  .nav-links a:hover { color:var(--cyan); }
+
+  html { 
+    scroll-behavior: smooth; 
+  }
+
+  body { 
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    letter-spacing: 0.3px;
+  }
+
+  /* ── NAVIGATION ── */
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 200;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  }
+
+  .nav-logo { 
+    font-family: 'Lora', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 2px;
+  }
+
+  .nav-links { 
+    display: flex; 
+    gap: 2.5rem; 
+    list-style: none; 
+  }
+
+  .nav-links a { 
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+    text-transform: uppercase;
+  }
+
+  .nav-links a:hover { 
+    color: var(--accent);
+  }
+
+  .nav-cta {
+    background: var(--accent);
+    color: white;
+    padding: 0.6rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(44, 62, 80, 0.15);
+  }
+
+  .nav-cta:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(44, 62, 80, 0.2);
+  }
+
+  @media(max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+  }
 
   /* ── HERO ── */
   .hero {
-    min-height:100vh; display:flex; align-items:center; justify-content:center;
-    padding:90px 2rem 5rem; position:relative; overflow:hidden;
-  }
-  /* Stars */
-  .stars { position:absolute; inset:0; pointer-events:none; }
-  .star { position:absolute; border-radius:50%; background:#fff; animation:twinkle var(--d,3s) var(--delay,0s) infinite alternate; }
-  @keyframes twinkle { from{opacity:.15} to{opacity:.9} }
-
-  /* Rocket SVG background */
-  .hero-rocket {
-    position:absolute; right:4%; top:10%; width:340px; opacity:.18;
-    animation:rocketfloat 6s ease-in-out infinite;
-    pointer-events:none;
-  }
-  @keyframes rocketfloat {
-    0%,100%{transform:translateY(0) rotate(-15deg)}
-    50%{transform:translateY(-24px) rotate(-15deg)}
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 2rem 80px;
+    background: linear-gradient(135deg, #fafbfc 0%, #f0f2f5 100%);
+    position: relative;
+    overflow: hidden;
   }
 
-  /* structural mesh bg */
-  .hero-mesh {
-    position:absolute; inset:0; pointer-events:none; opacity:.06;
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(44, 62, 80, 0.04) 0%, transparent 70%);
+    border-radius: 50%;
   }
 
-  .hero-inner { max-width:750px; text-align:center; position:relative; z-index:2; }
+  .hero-inner {
+    max-width: 800px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+
   .hero-badge {
-    display:inline-flex; align-items:center; gap:.5rem;
-    background:rgba(255,107,53,0.12); border:1px solid rgba(255,107,53,0.4);
-    color:var(--orange2); padding:.4rem 1.2rem; border-radius:99px;
-    font-size:.75rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; margin-bottom:1.8rem;
+    display: inline-block;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    color: var(--accent);
+    padding: 0.6rem 1.5rem;
+    border-radius: 30px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    text-transform: uppercase;
   }
+
   .hero h1 {
-    font-family:'Space Grotesk',sans-serif;
-    font-size:clamp(2.6rem,7vw,4.4rem); font-weight:800; line-height:1.05;
-    margin-bottom:1.1rem; letter-spacing:-.02em;
+    font-family: 'Lora', serif;
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1.2rem;
+    color: var(--text-primary);
+    letter-spacing: -1px;
   }
-  .hero h1 .name-first { color:var(--cyan); }
-  .hero h1 .name-last { color:var(--orange); }
-  .hero-sub { font-size:1.05rem; color:var(--muted); max-width:560px; margin:0 auto 2rem; }
-  .hero-tags { display:flex; flex-wrap:wrap; gap:.55rem; justify-content:center; margin-bottom:2.5rem; }
+
+  .hero-subtitle {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
+  }
+
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    justify-content: center;
+    margin-bottom: 2.5rem;
+  }
+
   .tag {
-    background:rgba(0,212,255,.07); border:1px solid rgba(0,212,255,.22);
-    color:var(--cyan2); padding:.3rem .85rem; border-radius:99px; font-size:.75rem; font-weight:500;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
   }
-  .hero-ctas { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
-  .btn { padding:.72rem 1.9rem; border-radius:9px; font-size:.88rem; font-weight:700; text-decoration:none; transition:all .2s; cursor:pointer; border:none; display:inline-block; }
-  .btn-orange { background:linear-gradient(135deg,#ff6b35,#ff9c70); color:#fff; box-shadow:0 0 26px rgba(255,107,53,.3); }
-  .btn-orange:hover { transform:translateY(-2px); box-shadow:0 0 36px rgba(255,107,53,.5); }
-  .btn-outline { background:transparent; color:var(--cyan); border:1px solid rgba(0,212,255,.4); }
-  .btn-outline:hover { background:rgba(0,212,255,.08); border-color:var(--cyan); }
+
+  .tag:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    padding: 0.85rem 2rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+    letter-spacing: 0.5px;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: white;
+    box-shadow: 0 4px 12px rgba(44, 62, 80, 0.15);
+  }
+
+  .btn-primary:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(44, 62, 80, 0.2);
+  }
+
+  .btn-secondary {
+    background: var(--bg-secondary);
+    color: var(--accent);
+    border: 1.5px solid var(--accent);
+  }
+
+  .btn-secondary:hover {
+    background: var(--accent);
+    color: white;
+  }
 
   /* ── SECTIONS ── */
-  section { padding:5.5rem 2rem; }
-  .section-inner { max-width:1020px; margin:0 auto; }
+  section {
+    padding: 6rem 2rem;
+  }
+
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
   .section-label {
-    font-size:.68rem; font-weight:900; letter-spacing:.22em; text-transform:uppercase;
-    color:var(--yellow); margin-bottom:.5rem;
+    font-size: 0.75rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
   }
-  .section-title { background:linear-gradient(90deg,#fff 40%,var(--cyan)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
-    font-family:'Space Grotesk',sans-serif;
-    font-size:clamp(1.7rem,4vw,2.3rem); font-weight:800; margin-bottom:3rem;
-    letter-spacing:-.02em;
+
+  .section-title {
+    font-family: 'Lora', serif;
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    font-weight: 700;
+    margin-bottom: 3.5rem;
+    color: var(--text-primary);
+    letter-spacing: -0.5px;
   }
-  .divider { border:none; border-top:1px solid var(--border); }
+
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+  }
 
   /* ── ABOUT ── */
-  .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:3.5rem; align-items:start; }
-  @media(max-width:720px){ .about-grid{grid-template-columns:1fr;} }
-  .about-text p { color:var(--muted); margin-bottom:1rem; font-size:.95rem; }
-  .stats-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  @media(max-width: 768px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+
+  .about-text p {
+    color: var(--text-secondary);
+    margin-bottom: 1.3rem;
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
   .stat-card {
-    background:var(--card); border:1px solid var(--border);
-    border-radius:14px; padding:1.4rem; text-align:center;
-    position:relative; overflow:hidden;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
   }
-  .stat-card::before {
-    content:''; position:absolute; top:0; left:0; right:0; height:3px;
-    background:linear-gradient(90deg,var(--orange),var(--cyan));
+
+  .stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+    border-color: var(--accent-light);
   }
-  .stat-num { color:var(--orange) !important;
-    font-family:'Space Grotesk',sans-serif; font-size:2rem; font-weight:800;
-    color:var(--cyan); display:block; line-height:1;
+
+  .stat-num {
+    font-family: 'Lora', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 0.5rem;
   }
-  .stat-label { font-size:.72rem; color:var(--muted); margin-top:.4rem; display:block; }
+
+  .stat-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
 
   /* ── SKILLS ── */
-  .skills-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:1.2rem; }
-  .skill-card {
-    background:var(--card); border:1px solid var(--border);
-    border-radius:16px; padding:1.6rem;
-    transition:transform .22s, border-color .22s, box-shadow .22s;
-    position:relative; overflow:hidden;
+  .skills-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
   }
-  .skill-card::after {
-    content:''; position:absolute; bottom:0; left:0; right:0; height:2px;
-    background:var(--accent-bar,linear-gradient(90deg,var(--orange),var(--cyan)));
-    transform:scaleX(0); transition:transform .3s; transform-origin:left;
+
+  @media(max-width: 768px) {
+    .skills-container {
+      grid-template-columns: 1fr;
+    }
   }
-  .skill-card:hover { transform:translateY(-4px); border-color:var(--cyan); box-shadow:0 8px 30px rgba(0,212,255,.1); }
-  .skill-card:hover::after { transform:scaleX(1); }
-  .skill-icon { font-size:1.8rem; margin-bottom:1rem; display:block; }
-  .skill-card h4 { font-size:.9rem; font-weight:700; margin-bottom:.7rem; color:var(--text); }
-  .skill-pills { display:flex; flex-wrap:wrap; gap:.4rem; }
-  .pill {
-    background:rgba(168,85,247,.1); border:1px solid rgba(168,85,247,.3);
-    color:var(--purple2); font-size:.7rem; padding:.22rem .65rem; border-radius:99px; font-weight:500;
+
+  .skill-category {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    transition: all 0.3s ease;
+  }
+
+  .skill-category:hover {
+    border-color: var(--accent-light);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+  }
+
+  .skill-category h4 {
+    color: var(--accent);
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .mastery-item {
+    margin-bottom: 1.2rem;
+  }
+
+  .mastery-label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+  }
+
+  .mastery-label span:first-child {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .mastery-label span:last-child {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+  }
+
+  .mastery-bar {
+    background: var(--bg-tertiary);
+    border-radius: 4px;
+    height: 6px;
+    overflow: hidden;
+  }
+
+  .mastery-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent-light));
+    border-radius: 4px;
   }
 
   /* ── PROJECTS ── */
-  .projects-grid { display:grid; gap:1.6rem; }
-  .project-card {
-    background:var(--card); border:1px solid var(--border);
-    border-radius:18px; padding:2rem 2rem 1.6rem;
-    display:grid; grid-template-columns:1fr auto; gap:1.2rem; align-items:start;
-    transition:transform .22s, border-color .22s, box-shadow .22s;
-    position:relative; overflow:hidden;
+  .filter-tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    justify-content: center;
   }
-  .project-card::before {
-    content:''; position:absolute; left:0; top:0; bottom:0; width:4px;
-    background:linear-gradient(180deg,var(--orange),var(--cyan));
+
+  .filter-btn {
+    background: var(--bg-secondary);
+    border: 1.5px solid var(--border);
+    color: var(--text-secondary);
+    padding: 0.7rem 1.5rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
-  .project-card:hover { transform:translateY(-3px); border-color:var(--orange); box-shadow:0 10px 40px rgba(255,107,53,.1); }
-  .project-card h3 { font-size:1rem; font-weight:700; margin-bottom:.35rem; }
-  .project-meta { font-size:.76rem; color:var(--orange2); margin-bottom:.7rem; font-weight:600; letter-spacing:.04em; }
-  .project-card p { color:var(--muted); font-size:.86rem; line-height:1.6; }
-  .project-results { margin-top:.9rem; display:flex; flex-wrap:wrap; gap:.5rem; }
+
+  .filter-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .filter-btn.active {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+    box-shadow: 0 4px 12px rgba(44, 62, 80, 0.15);
+  }
+
+  .featured-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  @media(max-width: 960px) {
+    .featured-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .featured-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  }
+
+  .featured-card:hover {
+    border-color: var(--accent-light);
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  .featured-image {
+    width: 100%;
+    aspect-ratio: 16/10;
+    background: linear-gradient(135deg, #f0f2f5 0%, #e2e8f0 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: rgba(44, 62, 80, 0.2);
+    overflow: hidden;
+  }
+
+  .featured-content {
+    padding: 2rem;
+  }
+
+  .featured-badge {
+    display: inline-block;
+    background: var(--bg-tertiary);
+    color: var(--accent);
+    font-size: 0.7rem;
+    padding: 0.4rem 0.9rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .featured-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+    color: var(--text-primary);
+  }
+
+  .featured-card p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .featured-results {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
   .result-chip {
-    background:rgba(0,212,255,.09); border:1px solid rgba(0,212,255,.25);
-    color:var(--cyan); font-size:.7rem; padding:.25rem .7rem; border-radius:99px; font-weight:600;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    color: var(--accent);
+    font-size: 0.7rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: 4px;
+    font-weight: 600;
   }
-  .project-badge {
-    background:rgba(255,107,53,.12); border:1px solid rgba(255,107,53,.35);
-    color:var(--orange); font-size:.7rem; padding:.3rem .9rem;
-    border-radius:99px; white-space:nowrap; height:fit-content; font-weight:700;
-  }
-  @media(max-width:600px){ .project-card{grid-template-columns:1fr;} }
 
-  /* ── ADD PROJECT CARD ── */
-  .add-project-card {
-    background:var(--card2); border:2px dashed var(--border);
-    border-radius:18px; padding:2.5rem;
-    display:flex; flex-direction:column; align-items:center; justify-content:center;
-    gap:.8rem; cursor:pointer; transition:border-color .25s, background .25s;
-    text-align:center;
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
   }
-  .add-project-card:hover { border-color:var(--cyan); background:rgba(0,212,255,.04); }
-  .add-icon { font-size:2.5rem; color:var(--muted); transition:color .25s; }
-  .add-project-card:hover .add-icon { color:var(--cyan); }
-  .add-project-card p { color:var(--muted); font-size:.88rem; }
-  .add-project-card strong { color:var(--cyan); font-size:.92rem; }
 
-  /* ADD PROJECT MODAL */
-  .modal-overlay {
-    display:none; position:fixed; inset:0; z-index:500;
-    background:rgba(0,0,0,.7); backdrop-filter:blur(6px);
-    align-items:center; justify-content:center; padding:1rem;
+  @media(max-width: 768px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
   }
-  .modal-overlay.open { display:flex; }
-  .modal {
-    background:var(--card); border:1px solid var(--border);
-    border-radius:20px; padding:2rem; width:100%; max-width:560px;
-    max-height:90vh; overflow-y:auto;
+
+  .project-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
   }
-  .modal h3 { font-family:'Space Grotesk',sans-serif; font-size:1.3rem; font-weight:800; margin-bottom:1.5rem; color:var(--cyan); }
-  .form-group { margin-bottom:1.1rem; }
-  .form-group label { display:block; font-size:.78rem; font-weight:700; color:var(--muted); margin-bottom:.4rem; text-transform:uppercase; letter-spacing:.07em; }
-  .form-group input, .form-group textarea, .form-group select {
-    width:100%; background:var(--bg2); border:1px solid var(--border);
-    color:var(--text); border-radius:9px; padding:.65rem .9rem; font-size:.9rem;
-    font-family:'Inter',sans-serif; transition:border-color .2s;
-    resize:vertical;
+
+  .project-card:hover {
+    border-color: var(--accent-light);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   }
-  .form-group input:focus, .form-group textarea:focus { outline:none; border-color:var(--cyan); }
-  .form-group textarea { min-height:90px; }
-  .modal-btns { display:flex; gap:.8rem; margin-top:1.5rem; justify-content:flex-end; }
-  .btn-cancel { background:transparent; border:1px solid var(--border); color:var(--muted); padding:.6rem 1.4rem; border-radius:8px; cursor:pointer; font-size:.88rem; font-weight:600; }
-  .btn-cancel:hover { border-color:var(--muted); }
-  .btn-save { background:linear-gradient(135deg,#ff6b35,#ff9c70); color:#fff; border:none; padding:.6rem 1.5rem; border-radius:8px; cursor:pointer; font-size:.88rem; font-weight:700; }
-  .btn-save:hover { opacity:.9; }
+
+  .project-image {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: linear-gradient(135deg, #f0f2f5 0%, #e2e8f0 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: rgba(44, 62, 80, 0.15);
+    overflow: hidden;
+  }
+
+  .project-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project-meta {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .project-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+    color: var(--text-primary);
+  }
+
+  .project-card p {
+    color: var(--text-secondary);
+    font-size: 0.88rem;
+    line-height: 1.6;
+    flex-grow: 1;
+    margin-bottom: 1rem;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag-small {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 4px;
+    font-weight: 600;
+  }
 
   /* ── EXPERIENCE ── */
-  .timeline { display:flex; flex-direction:column; gap:0; }
-  .timeline-item { display:grid; grid-template-columns:140px 1fr; gap:2rem; position:relative; padding-bottom:2.5rem; }
-  .timeline-item:last-child { padding-bottom:0; }
-  .timeline-item::before { content:''; position:absolute; left:148px; top:12px; bottom:0; width:1px; background:var(--border); }
-  .timeline-item:last-child::before { display:none; }
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 2rem;
+    position: relative;
+    padding-bottom: 2.5rem;
+    border-left: 1px solid var(--border);
+    margin-left: 70px;
+    padding-left: 2rem;
+  }
+
+  .timeline-item:last-child {
+    padding-bottom: 0;
+    border-left: none;
+  }
+
   .timeline-dot {
-    position:absolute; left:140px; top:8px;
-    width:16px; height:16px; border-radius:50%;
-    background:linear-gradient(135deg,var(--orange),var(--cyan));
-    transform:translateX(-50%); border:2px solid var(--bg);
-  }
-  .timeline-date { font-size:.76rem; color:var(--muted); text-align:right; padding-top:.15rem; line-height:1.5; }
-  .timeline-content { padding-left:1.6rem; }
-  .timeline-content h3 { font-size:1rem; font-weight:700; color:var(--text); }
-  .timeline-content .company { color:var(--orange2); font-size:.84rem; margin:.25rem 0 .55rem; font-weight:600; }
-  .timeline-content ul { color:var(--muted); font-size:.84rem; padding-left:1.2rem; }
-  .timeline-content ul li { margin-bottom:.4rem; }
-  @media(max-width:600px){
-    .timeline-item{grid-template-columns:1fr;}
-    .timeline-item::before,.timeline-dot{display:none;}
-    .timeline-date{text-align:left;}
-    .timeline-content{padding-left:0;}
+    position: absolute;
+    left: -9px;
+    top: 0;
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 3px solid white;
+    box-shadow: 0 0 0 1px var(--accent);
   }
 
-  /* ── CERTS ── */
-  .certs-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; }
-  .cert-card {
-    background:var(--card); border:1px solid var(--border);
-    border-radius:14px; padding:1.3rem 1.5rem;
-    display:flex; gap:1rem; align-items:flex-start;
-    transition:border-color .2s, transform .2s;
+  .timeline-date {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 600;
   }
-  .cert-card:hover { border-color:var(--purple); transform:translateY(-2px); }
-  .cert-icon { font-size:1.5rem; flex-shrink:0; }
-  .cert-card h4 { font-size:.84rem; font-weight:700; margin-bottom:.2rem; }
-  .cert-card p { font-size:.73rem; color:var(--muted); }
 
-  /* ── EDU CARDS ── */
-  .edu-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; margin-bottom:2.5rem; }
-  @media(max-width:600px){ .edu-grid{grid-template-columns:1fr;} }
+  .timeline-content h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+    color: var(--text-primary);
+  }
+
+  .timeline-content .company {
+    color: var(--accent);
+    font-size: 0.9rem;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+  }
+
+  .timeline-content ul {
+    color: var(--text-secondary);
+    font-size: 0.88rem;
+    padding-left: 1.5rem;
+  }
+
+  .timeline-content ul li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+  }
+
+  @media(max-width: 640px) {
+    .timeline-item {
+      grid-template-columns: 1fr;
+      margin-left: 0;
+      border-left: none;
+      padding-left: 0;
+    }
+    .timeline-dot {
+      display: none;
+    }
+  }
+
+  /* ── EDUCATION & CERTS ── */
+  .edu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  @media(max-width: 640px) {
+    .edu-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
   .edu-card {
-    background:var(--card); border:1px solid var(--border);
-    border-radius:16px; padding:1.5rem; position:relative; overflow:hidden;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    padding: 1.8rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
   }
-  .edu-card::before {
-    content:''; position:absolute; top:0; left:0; right:0; height:3px;
-    background:linear-gradient(90deg,var(--cyan),var(--purple));
+
+  .edu-card:hover {
+    border-color: var(--accent-light);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
   }
-  .edu-card h4 { font-size:.9rem; font-weight:700; margin-bottom:.4rem; }
-  .edu-card .school { color:var(--cyan); font-size:.84rem; font-weight:600; margin-bottom:.25rem; }
-  .edu-card .period { color:var(--muted); font-size:.76rem; }
+
+  .edu-card h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+  }
+
+  .edu-card .school {
+    color: var(--accent);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+  }
+
+  .edu-card .period {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+  }
+
+  .certs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .cert-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    padding: 1.3rem;
+    border-radius: 8px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  }
+
+  .cert-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  }
+
+  .cert-icon {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+
+  .cert-card h4 {
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+    color: var(--text-primary);
+  }
+
+  .cert-card p {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
 
   /* ── CONTACT ── */
   .contact-box {
-    background:var(--card); border:1px solid var(--border);
-    border-radius:22px; padding:3.5rem; text-align:center; max-width:620px; margin:0 auto;
-    position:relative; overflow:hidden;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    padding: 4rem;
+    border-radius: 8px;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
   }
-  .contact-box::before {
-    content:''; position:absolute; inset:0;
-    background:radial-gradient(ellipse 70% 50% at 50% 0%, rgba(0,212,255,.05) 0%, transparent 70%);
-  }
-  .contact-box h2 { font-family:'Space Grotesk',sans-serif; font-size:2rem; font-weight:800; margin-bottom:.8rem; position:relative; }
-  .contact-box p { color:var(--muted); margin-bottom:2rem; position:relative; }
-  .contact-links { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; position:relative; }
-  .contact-link {
-    display:flex; align-items:center; gap:.55rem;
-    background:var(--bg2); border:1px solid var(--border);
-    color:var(--text); text-decoration:none;
-    padding:.65rem 1.3rem; border-radius:9px; font-size:.86rem; font-weight:600;
-    transition:all .2s;
-  }
-  .contact-link:hover { border-color:var(--orange); color:var(--orange); }
-  footer { border-top:1px solid var(--border); padding:2rem; text-align:center; color:var(--muted); font-size:.78rem; }
 
-  /* STRUCTURAL SVG BG */
-  .section-deco { position:relative; }
-  .section-bg-svg { position:absolute; right:0; top:50%; transform:translateY(-50%); opacity:.04; pointer-events:none; width:320px; }
+  .contact-box h2 {
+    font-family: 'Lora', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+  }
+
+  .contact-box p {
+    color: var(--text-secondary);
+    margin-bottom: 2.5rem;
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  .contact-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .contact-link:hover {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+  }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2.5rem;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    background: var(--bg-primary);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media(max-width: 768px) {
+    section { padding: 4rem 1.5rem; }
+    .contact-box { padding: 2.5rem; }
+  }
 </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">SI//AERO</div>
+  <div class="nav-logo">Sastika Ilango</div>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <a href="#contact" class="nav-cta">Get in Touch</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <!-- Stars -->
-  <div class="stars" id="stars"></div>
-
-  <!-- Structural mesh SVG background -->
-  <svg class="hero-mesh" viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-    <!-- Wing rib/spar structural grid -->
-    <g stroke="#00d4ff" stroke-width="1" fill="none">
-      <!-- Main spar lines -->
-      <line x1="0" y1="350" x2="1200" y2="350"/>
-      <line x1="600" y1="0" x2="600" y2="700"/>
-      <!-- Diagonal braces -->
-      <line x1="0" y1="0" x2="600" y2="350"/><line x1="600" y1="350" x2="1200" y2="0"/>
-      <line x1="0" y1="700" x2="600" y2="350"/><line x1="600" y1="350" x2="1200" y2="700"/>
-      <!-- Ribs -->
-      <line x1="200" y1="0" x2="200" y2="700"/><line x1="400" y1="0" x2="400" y2="700"/>
-      <line x1="800" y1="0" x2="800" y2="700"/><line x1="1000" y1="0" x2="1000" y2="700"/>
-      <!-- Cross braces -->
-      <line x1="0" y1="175" x2="1200" y2="175"/><line x1="0" y1="525" x2="1200" y2="525"/>
-      <!-- Diagonals sub -->
-      <line x1="0" y1="0" x2="200" y2="175"/><line x1="200" y1="175" x2="400" y2="0"/>
-      <line x1="400" y1="0" x2="600" y2="175"/><line x1="0" y1="175" x2="200" y2="350"/>
-      <line x1="200" y1="350" x2="400" y2="175"/><line x1="400" y1="175" x2="600" y2="350"/>
-      <line x1="800" y1="0" x2="1000" y2="175"/><line x1="1000" y1="175" x2="1200" y2="0"/>
-      <line x1="600" y1="175" x2="800" y2="0"/>
-      <!-- More ribs -->
-      <line x1="0" y1="350" x2="200" y2="525"/><line x1="200" y1="525" x2="400" y2="350"/>
-      <line x1="400" y1="350" x2="600" y2="525"/><line x1="600" y1="525" x2="800" y2="350"/>
-      <line x1="800" y1="350" x2="1000" y2="525"/><line x1="1000" y1="525" x2="1200" y2="350"/>
-      <line x1="0" y1="525" x2="200" y2="700"/><line x1="200" y1="700" x2="400" y2="525"/>
-      <line x1="400" y1="525" x2="600" y2="700"/><line x1="600" y1="700" x2="800" y2="525"/>
-      <line x1="800" y1="525" x2="1000" y2="700"/><line x1="1000" y1="700" x2="1200" y2="525"/>
-      <!-- Joint dots -->
-      <circle cx="200" cy="175" r="4" fill="#00d4ff"/>
-      <circle cx="400" cy="175" r="4" fill="#00d4ff"/>
-      <circle cx="600" cy="175" r="4" fill="#00d4ff"/>
-      <circle cx="800" cy="175" r="4" fill="#00d4ff"/>
-      <circle cx="1000" cy="175" r="4" fill="#00d4ff"/>
-      <circle cx="200" cy="350" r="4" fill="#ff6b35"/>
-      <circle cx="400" cy="350" r="4" fill="#ff6b35"/>
-      <circle cx="600" cy="350" r="6" fill="#ff6b35"/>
-      <circle cx="800" cy="350" r="4" fill="#ff6b35"/>
-      <circle cx="1000" cy="350" r="4" fill="#ff6b35"/>
-      <circle cx="200" cy="525" r="4" fill="#00d4ff"/>
-      <circle cx="400" cy="525" r="4" fill="#00d4ff"/>
-      <circle cx="600" cy="525" r="4" fill="#00d4ff"/>
-      <circle cx="800" cy="525" r="4" fill="#00d4ff"/>
-      <circle cx="1000" cy="525" r="4" fill="#00d4ff"/>
-    </g>
-  </svg>
-
-  <!-- Rocket -->
-  <svg class="hero-rocket" viewBox="0 0 200 400" xmlns="http://www.w3.org/2000/svg">
-    <!-- Exhaust flame -->
-    <ellipse cx="100" cy="380" rx="22" ry="30" fill="#ff6b35" opacity=".8"/>
-    <ellipse cx="100" cy="370" rx="14" ry="20" fill="#ffd93d" opacity=".9"/>
-    <ellipse cx="100" cy="363" rx="8" ry="12" fill="#fff" opacity=".9"/>
-    <!-- Body -->
-    <path d="M60 320 Q60 280 100 220 Q140 280 140 320 Z" fill="#1a2a50" stroke="#00d4ff" stroke-width="2"/>
-    <rect x="60" y="250" width="80" height="70" rx="4" fill="#0c1530" stroke="#00d4ff" stroke-width="1.5"/>
-    <!-- Nose cone -->
-    <path d="M60 250 Q60 160 100 80 Q140 160 140 250 Z" fill="#00d4ff" opacity=".85"/>
-    <path d="M75 220 Q75 160 100 100 Q125 160 125 220 Z" fill="#7df4ff" opacity=".5"/>
-    <!-- Window -->
-    <circle cx="100" cy="190" r="18" fill="#080f24" stroke="#ff6b35" stroke-width="2.5"/>
-    <circle cx="100" cy="190" r="12" fill="#0c1530" stroke="#ffd93d" stroke-width="1"/>
-    <circle cx="95" cy="185" r="4" fill="#fff" opacity=".7"/>
-    <!-- Fins -->
-    <path d="M60 320 L30 360 L60 340 Z" fill="#ff6b35" opacity=".9"/>
-    <path d="M140 320 L170 360 L140 340 Z" fill="#ff6b35" opacity=".9"/>
-    <!-- Details -->
-    <line x1="70" y1="265" x2="130" y2="265" stroke="#00d4ff" stroke-width="1" opacity=".6"/>
-    <line x1="70" y1="280" x2="130" y2="280" stroke="#00d4ff" stroke-width="1" opacity=".4"/>
-    <line x1="70" y1="295" x2="130" y2="295" stroke="#00d4ff" stroke-width="1" opacity=".3"/>
-    <!-- Boosters -->
-    <rect x="40" y="280" width="20" height="50" rx="5" fill="#1a2a50" stroke="#a855f7" stroke-width="1.5"/>
-    <rect x="140" y="280" width="20" height="50" rx="5" fill="#1a2a50" stroke="#a855f7" stroke-width="1.5"/>
-    <ellipse cx="50" cy="333" rx="10" ry="6" fill="#ff6b35" opacity=".7"/>
-    <ellipse cx="150" cy="333" rx="10" ry="6" fill="#ff6b35" opacity=".7"/>
-  </svg>
-
   <div class="hero-inner">
-    <div class="hero-badge">[ M.S. AEROSPACE ENG. · CSULB · 2026 ]</div>
-    <h1>
-      <span class="name-first">Sastika</span><br>
-      <span class="name-last">Ilango</span>
-    </h1>
-    <p class="hero-sub">Structures & Materials · FEA · CFD · Thermal Engineering · Composite Structures</p>
+    <div class="hero-badge">Aerospace Engineer • M.S. Candidate CSULB</div>
+    <h1>Structural Analysis & Simulation Engineering</h1>
+    <p class="hero-subtitle">FEA specialist designing high-performance aerospace structures through precision simulation and rigorous analysis.</p>
     <div class="hero-tags">
-      <span class="tag">ANSYS Workbench</span>
-      <span class="tag">CATIA V5</span>
-      <span class="tag">SolidWorks</span>
-      <span class="tag">MATLAB</span>
-      <span class="tag">Python</span>
-      <span class="tag">Composites</span>
-      <span class="tag">FEA</span>
-      <span class="tag">CFD</span>
-      <span class="tag">GD&T</span>
+      <span class="tag">Composite Structures</span>
+      <span class="tag">ANSYS FEA</span>
+      <span class="tag">Impact Dynamics</span>
+      <span class="tag">Thermal Analysis</span>
     </div>
     <div class="hero-ctas">
-      <a href="#projects" class="btn btn-orange">See the Work</a>
-      <a href="#contact" class="btn btn-outline">Open to Roles</a>
+      <a href="#projects" class="btn btn-primary">View Projects</a>
+      <a href="#contact" class="btn btn-secondary">Contact</a>
     </div>
   </div>
 </section>
@@ -429,19 +888,31 @@
 <!-- ABOUT -->
 <section id="about">
   <div class="section-inner">
-    <div class="section-label">// Who I Am</div>
+    <div class="section-label">About</div>
+    <h2 class="section-title">Precision Through Analysis</h2>
     <div class="about-grid">
       <div class="about-text">
-        <h2 class="section-title">Engineering at the intersection of structures & simulation</h2>
-        <p>M.S. candidate at CSULB. I live in the space between a mesh and a material — running FEA so engineers can sleep at night.</p>
-        <p>From delamination onset to core crushing under 900 m/s impact — I model what happens before it happens. ANSYS, LS-DYNA, COMSOL, CATIA — whatever the problem needs.</p>
-        <p>Fremont, CA. Targeting structural/thermal FEA, composite aerostructures, and anything that flies.</p>
+        <p>M.S. candidate in Aerospace Engineering at California State University, Long Beach, with focus on structures and materials. I specialize in numerical simulation and finite element analysis, working at the intersection of mechanics and computational engineering.</p>
+        <p>My expertise spans static and dynamic analysis, composite material behavior, thermal-structural coupling, and impact dynamics. I use rigorous simulation methodologies to predict failure modes before physical testing, enabling efficient design iteration.</p>
+        <p>Based in Fremont, CA. Actively seeking roles in structural FEA, composite aerostructures, or impact analysis.</p>
       </div>
       <div class="stats-grid">
-        <div class="stat-card"><span class="stat-num">4+</span><span class="stat-label">Projects Shipped</span></div>
-        <div class="stat-card"><span class="stat-num">4</span><span class="stat-label">Certifications Earned</span></div>
-        <div class="stat-card"><span class="stat-num">ANSYS</span><span class="stat-label">Primary Solver</span></div>
-        <div class="stat-card"><span class="stat-num">M.S.</span><span class="stat-label">Grad Degree, In Progress</span></div>
+        <div class="stat-card">
+          <span class="stat-num">16+</span>
+          <span class="stat-label">Projects Completed</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">4</span>
+          <span class="stat-label">Professional Certifications</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">M.S.</span>
+          <span class="stat-label">Degree (2026)</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">ANSYS</span>
+          <span class="stat-label">Primary Tool</span>
+        </div>
       </div>
     </div>
   </div>
@@ -452,73 +923,86 @@
 <!-- SKILLS -->
 <section id="skills">
   <div class="section-inner">
-    <div class="section-label">// What I Wield</div>
-    <h2 class="section-title">Skills & Tools</h2>
-    <!-- Structural truss decoration -->
-    <div style="position:relative;">
-      <svg style="position:absolute;right:0;top:-20px;width:180px;opacity:.07;pointer-events:none" viewBox="0 0 180 120" xmlns="http://www.w3.org/2000/svg">
-        <g stroke="#ff6b35" stroke-width="1.5" fill="none">
-          <polygon points="90,10 170,110 10,110"/><line x1="90" y1="10" x2="90" y2="110"/>
-          <line x1="10" y1="110" x2="90" y2="60"/><line x1="170" y1="110" x2="90" y2="60"/>
-          <circle cx="90" cy="10" r="5" fill="#ff6b35"/><circle cx="10" cy="110" r="5" fill="#ff6b35"/>
-          <circle cx="170" cy="110" r="5" fill="#ff6b35"/><circle cx="90" cy="60" r="4" fill="#00d4ff"/>
-          <circle cx="90" cy="110" r="4" fill="#00d4ff"/>
-        </g>
-      </svg>
-      <div class="skills-grid">
-        <div class="skill-card">
-          <span class="skill-icon">🔩</span>
-          <h4>Structural Analysis</h4>
-          <div class="skill-pills">
-            <span class="pill">FEA (ANSYS)</span><span class="pill">Stress Analysis</span>
-            <span class="pill">Fatigue</span><span class="pill">Composites</span>
-            <span class="pill">Delamination</span><span class="pill">Hand Calc</span>
-          </div>
+    <div class="section-label">Expertise</div>
+    <h2 class="section-title">Technical Competencies</h2>
+    <div class="skills-container">
+      <div class="skill-category">
+        <h4>Structural & Materials</h4>
+        <div class="mastery-item">
+          <div class="mastery-label"><span>FEA (ANSYS)</span><span>Expert</span></div>
+          <div class="mastery-bar"><div class="mastery-fill" style="width:95%"></div></div>
         </div>
-        <div class="skill-card">
-          <span class="skill-icon">🌡️</span>
-          <h4>Thermal & Fluid</h4>
-          <div class="skill-pills">
-            <span class="pill">CFD</span><span class="pill">Heat Transfer</span>
-            <span class="pill">Thermodynamics</span><span class="pill">Coolant Systems</span>
-            <span class="pill">Reliability Analysis</span>
-          </div>
+        <div class="mastery-item">
+          <div class="mastery-label"><span>Composite Structures</span><span>Advanced</span></div>
+          <div class="mastery-bar"><div class="mastery-fill" style="width:90%"></div></div>
         </div>
-        <div class="skill-card">
-          <span class="skill-icon">🖥️</span>
-          <h4>CAD & Simulation</h4>
-          <div class="skill-pills">
-            <span class="pill">CATIA V5</span><span class="pill">SolidWorks</span>
-            <span class="pill">AutoCAD</span><span class="pill">ANSYS Workbench</span>
-            <span class="pill">COMSOL Multiphysics</span><span class="pill">XFLR5</span>
-          </div>
+        <div class="mastery-item">
+          <div class="mastery-label"><span>Cohesive Zone Modeling</span><span>Advanced</span></div>
+          <div class="mastery-bar"><div class="mastery-fill" style="width:88%"></div></div>
         </div>
-        <div class="skill-card">
-          <span class="skill-icon">💻</span>
-          <h4>Programming</h4>
-          <div class="skill-pills">
-            <span class="pill">MATLAB</span><span class="pill">Python</span>
-            <span class="pill">C/C++</span><span class="pill">GitHub</span>
-            <span class="pill">Simulink</span>
-          </div>
+        <div class="mastery-item">
+          <div class="mastery-label"><span>Impact Dynamics</span><span>Advanced</span></div>
+          <div class="mastery-bar"><div class="mastery-fill" style="width:87%"></div></div>
         </div>
-        <div class="skill-card">
-          <span class="skill-icon">🔬</span>
-          <h4>Testing & Hardware</h4>
-          <div class="skill-pills">
-            <span class="pill">Tensile Testing</span><span class="pill">SEM</span>
-            <span class="pill">Data Acquisition</span><span class="pill">GD&T</span>
-            <span class="pill">DFM</span>
-          </div>
+      </div>
+
+      <div class="skill-category">
+        <h4>Simulation & CAD</h4>
+        <div class="mastery-item">
+          <div class="mastery-label"><span>CATIA V5</span><span>Expert</span></div>
+          <div class="mastery-bar"><div class="mastery-fill" style="width:92%"></div></div>
         </div>
-        <div class="skill-card">
-          <span class="skill-icon">📋</span>
-          <h4>Engineering Process</h4>
-          <div class="skill-pills">
-            <span class="pill">FMEA</span><span class="pill">Root Cause Analysis</span>
-            <span class="pill">Tolerance Stack-up</span><span class="pill">ICAO Standards</span>
-            <span class="pill">Technical Docs</span>
-          </div>
+        <div class="mastery-item">
+          <div class="mastery-label"><span>LS-DYNA</span><span>Advanced</span></div>
+          <div class="mastery-bar"><div class="mastery-fill" style="width:88%"></div></div>
+        </div>
+        <div class="mastery-item">
+          <div class="mastery-label"><span>COMSOL Multiphysics</span><span>Advanced</span></div>
+          <div class="mastery-bar"><div class="mastery-fill" style="width:86%"></div></div>
+        </div>
+        <div class="mastery-item">
+          <div class="mastery-label"><span>SolidWorks</span><span>Intermediate</span></div>
+          <div class="mastery-bar"><div class="mastery-fill" style="width:80%"></div></div>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <h4>CFD & Thermal</h4>
+        <div class="mastery-item">
+          <div class="mastery-label"><span>ANSYS Fluent</span><span>Advanced</span></div>
+          <div class="mastery-bar"><div class="mastery-fill" style="width:87%"></div></div>
+        </div>
+        <div class="mastery-item">
+          <div class="mastery-label"><span>Heat Transfer Analysis</span><span>Advanced</span></div>
+          <div class="mastery-bar"><div class="mastery-fill" style="width:88%"></div></div>
+        </div>
+        <div class="mastery-item">
+          <div class="mastery-label"><span>Thermo-Structural</span><span>Advanced</span></div>
+          <div class="mastery-bar"><div class="mastery-fill" style="width:85%"></div></div>
+        </div>
+        <div class="mastery-item">
+          <div class="mastery-label"><span>Aerodynamics (XFLR5)</span><span>Intermediate</span></div>
+          <div class="mastery-bar"><div class="mastery-fill" style="width:78%"></div></div>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <h4>Programming & Controls</h4>
+        <div class="mastery-item">
+          <div class="mastery-label"><span>MATLAB</span><span>Advanced</span></div>
+          <div class="mastery-bar"><div class="mastery-fill" style="width:89%"></div></div>
+        </div>
+        <div class="mastery-item">
+          <div class="mastery-label"><span>Simulink</span><span>Advanced</span></div>
+          <div class="mastery-bar"><div class="mastery-fill" style="width:86%"></div></div>
+        </div>
+        <div class="mastery-item">
+          <div class="mastery-label"><span>Python</span><span>Intermediate</span></div>
+          <div class="mastery-bar"><div class="mastery-fill" style="width:75%"></div></div>
+        </div>
+        <div class="mastery-item">
+          <div class="mastery-label"><span>Control Systems</span><span>Intermediate</span></div>
+          <div class="mastery-bar"><div class="mastery-fill" style="width:78%"></div></div>
         </div>
       </div>
     </div>
@@ -530,353 +1014,218 @@
 <!-- PROJECTS -->
 <section id="projects">
   <div class="section-inner">
-    <div class="section-label">// Things I Built</div>
-    <h2 class="section-title">What I Have Built.</h2>
-    <div class="projects-grid" id="projects-grid">
+    <div class="section-label">Portfolio</div>
+    <h2 class="section-title">Featured Work</h2>
 
-      <div class="project-card">
-        <div>
-          <h3>Riveted Composite Structures Under Static & Impact Loading: A Comparative FEA Study</h3>
-          <div class="project-meta">🏫 CSULB · Instructor: Surajit Roy</div>
-          <p>Numerically investigated the effect of rivet configuration (1-, 2-, and 4-rivet layouts) on interlaminar damage in GFRP–Nomex honeycomb sandwich panels under both quasi-static and high-velocity impact loading. Two complementary FEA approaches were employed in parallel.</p>
-          <p style="margin-top:.6rem;"><strong style="color:var(--cyan)">Case Study 1 - ANSYS ACP (Static):</strong> Modelled a 12-ply quasi-isotropic GFRP laminate using ANSYS Composite PrepPost (ACP). A bilinear Cohesive Zone Model (CZM) was introduced at the laminate mid-plane (between plies 6 and 7) using the Quadratic Nominal Stress (QNS) damage initiation criterion and Benzeggagh–Kenane (BK) mixed-mode fracture propagation law. Both force-controlled (20 kN tensile) and displacement-controlled (5 mm remote) loading were applied. The 2-rivet layout delivered the most balanced response - 21% reduction in von Mises stress vs. 1-rivet, with controlled delamination growth.</p>
-          <p style="margin-top:.6rem;"><strong style="color:var(--orange2)">Case Study 2 - LS-DYNA (Impact):</strong> Simulated high-velocity transverse impact (900 m/s rigid spherical impactor, 5 mm radius) on a GFRP–Nomex sandwich panel using explicit dynamics. Facesheet–core bonding was modelled via tiebreak contact formulation. The 4-rivet configuration reduced the debonded interface area by ~70% compared to the 1-rivet case, with core crushing volume cut by over 50%, confirming that higher fastener density is critical under impact loading.</p>
-          <div class="project-results">
-            <span class="result-chip">GFRP / Nomex Honeycomb</span>
+    <div class="featured-grid">
+      <div class="featured-card">
+        <div class="featured-image">📊</div>
+        <div class="featured-content">
+          <span class="featured-badge">Thesis · Composites · Impact</span>
+          <h3>Riveted Composite Structures</h3>
+          <p><strong>CSULB Thesis Study:</strong> Numerical investigation of rivet configuration effects on interlaminar delamination in GFRP–Nomex sandwich panels. Two case studies using ANSYS ACP (static, CZM) and LS-DYNA explicit dynamics (900 m/s impact).</p>
+          <div class="featured-results">
             <span class="result-chip">ANSYS ACP + CZM</span>
             <span class="result-chip">LS-DYNA Explicit</span>
-            <span class="result-chip">QNS + BK Criteria</span>
-            <span class="result-chip">900 m/s Impact</span>
-            <span class="result-chip">2-Rivet Optimal (Static)</span>
-            <span class="result-chip">4-Rivet Optimal (Impact)</span>
-            <span class="result-chip">−70% Debond Area</span>
-            <span class="result-chip">−50% Core Crush</span>
-            <span class="result-chip">Tiebreak Contact</span>
+            <span class="result-chip">−70% Debond</span>
           </div>
         </div>
-        <span class="project-badge">FEA · Composites · Impact</span>
       </div>
 
-      <div class="project-card">
-        <div>
-          <h3>Thermo-Fluid Mechanical System - CFD & Lab Validation</h3>
-          <div class="project-meta">🏫 SREC India · Jan – May 2024</div>
-          <p>Modeled conjugate heat transfer and turbulent pipe flow in ANSYS Fluent (k-ε turbulence model) to characterize coolant-side thermal resistance and wall heat flux distribution. Designed full system geometry in CATIA V5 with DFM and GD&T constraints; iterated manifold and heat exchanger geometry through simulation, correlating against thermocouple and differential pressure test data.</p>
-          <div class="project-results">
-            <span class="result-chip">+12% Airflow</span>
-            <span class="result-chip">−15% Emissions</span>
-            <span class="result-chip">−20% Fuel Use</span>
-            <span class="result-chip">CFD Validated</span>
-            <span class="result-chip">CATIA V5</span>
+      <div class="featured-card">
+        <div class="featured-image">✈️</div>
+        <div class="featured-content">
+          <span class="featured-badge">Controls · Flight Dynamics</span>
+          <h3>6-DOF Aircraft Flight Simulation</h3>
+          <p><strong>MATLAB/Simulink Model:</strong> Full 6-degree-of-freedom aircraft dynamics using Boeing 747 inertia parameters. Decoupled translational and rotational dynamics with body-axis velocity and Euler angle integration.</p>
+          <div class="featured-results">
+            <span class="result-chip">MATLAB/Simulink</span>
+            <span class="result-chip">ODE45 Integration</span>
+            <span class="result-chip">747-class Inertia</span>
           </div>
         </div>
-        <span class="project-badge">CFD · Thermal</span>
       </div>
-
-      <div class="project-card">
-        <div>
-          <h3>Multirole Aircraft Structural Design</h3>
-          <div class="project-meta">🏫 SREC India · Jan – May 2023</div>
-          <p>Designed wing and empennage structural layout in CATIA V5 and SolidWorks. Performed aerodynamic panel-method analysis in XFLR5 and computed spanwise shear, bending moment, and torsion distributions in MATLAB to size spar caps, ribs, and skin panels per load envelope. Executed multi-iteration trade studies across sweep angle, airfoil section, and structural packaging variables.</p>
-          <div class="project-results">
-            <span class="result-chip">Improved L/D Ratio</span>
-            <span class="result-chip">−8% Takeoff Distance</span>
-            <span class="result-chip">XFLR5 Analysis</span>
-            <span class="result-chip">CATIA V5</span>
-            <span class="result-chip">MATLAB</span>
-          </div>
-        </div>
-        <span class="project-badge">Aerostructures</span>
-      </div>
-
-      <div class="project-card">
-        <div>
-          <h3>Wireless Power Transfer System for Moving EVs</h3>
-          <div class="project-meta">🏫 SREC India · Aug – Dec 2023</div>
-          <p>Designed resonant inductive coupling coil geometry in SolidWorks and simulated electromagnetic field distribution and thermal losses using ANSYS Maxwell and ANSYS Thermal. Modeled impedance matching network in MATLAB/Simulink to minimize reactive power under dynamic lateral misalignment. Optimized coil geometry and ferrite core configuration through iterative simulation and bench testing.</p>
-          <div class="project-results">
-            <span class="result-chip">92.4% DC-DC Efficiency</span>
-            <span class="result-chip">Thermal Safe</span>
-            <span class="result-chip">ANSYS Maxwell</span>
-            <span class="result-chip">Bench Tested</span>
-          </div>
-        </div>
-        <span class="project-badge">Electromagnetics</span>
-      </div>
-
-      <div class="project-card">
-        <div>
-          <h3>Parametric Analysis of T/C Ratio Influence on Scramjet Compression Using Diamond Airfoil Geometries</h3>
-          <div class="project-meta">🔬 CFD Research · COMSOL Multiphysics</div>
-          <p>Investigated how the thickness-to-chord (t/c) ratio of a double-wedge diamond airfoil affects shock-based aerodynamic compression for scramjet inlet pre-compression at Mach 2.0. Four t/c ratios (0.1, 0.2, 0.3, 0.4) were evaluated using 2D compressible CFD simulations, validated against classical oblique shock theory via the θ–β–M relation and Rankine–Hugoniot jump conditions.</p>
-          <p style="margin-top:.6rem;">Analysis targeted three competing requirements: maximizing total pressure recovery, achieving hydrogen auto-ignition temperature (~452 K), and maintaining shock-on-lip alignment for 100% mass capture. The t/c = 0.3 configuration emerged as optimal - delivering a stable attached oblique shock, precise cowl alignment, and sufficient post-shock heating without sacrificing aerodynamic stability.</p>
-          <div class="project-results">
-            <span class="result-chip">Mach 2.0 CFD</span>
-            <span class="result-chip">t/c = 0.3 Optimal</span>
-            <span class="result-chip">452 K Auto-ignition</span>
-            <span class="result-chip">θ–β–M Validated</span>
-            <span class="result-chip">100% Mass Capture</span>
-            <span class="result-chip">COMSOL 5.5</span>
-            <span class="result-chip">Rankine–Hugoniot</span>
-            <span class="result-chip">Mesh Independence</span>
-          </div>
-        </div>
-        <span class="project-badge">Scramjet · CFD</span>
-      </div>
-
-      <div class="project-card">
-        <div>
-          <h3>Structural FEA - Plate Under Load (Stress, Strain & Deformation Study)</h3>
-          <div class="project-meta">🏫 CSULB · Spring 2025</div>
-          <p>Conducted static structural analysis on a flat plate under biaxial external loading using ANSYS Workbench. Designed the CAD geometry, applied fixed supports and directional forces, and extracted full-field results including total deformation, normal stress, shear stress, normal elastic strain, and shear elastic strain with stress contour mapping.</p>
-          <div class="project-results">
-            <span class="result-chip">Total Deformation: 0.58 mm</span>
-            <span class="result-chip">Normal Stress: ±7.29 MPa</span>
-            <span class="result-chip">Shear Stress: ±1.12 MPa</span>
-            <span class="result-chip">ANSYS Static Structural</span>
-            <span class="result-chip">Mesh Refinement</span>
-          </div>
-        </div>
-        <span class="project-badge">FEA · Structural</span>
-      </div>
-
-      <div class="project-card">
-        <div>
-          <h3>Thermal FEM Analysis - Aluminum Cylinder & Block (Steady-State)</h3>
-          <div class="project-meta">🏫 CSULB · Spring 2025</div>
-          <p>Performed steady-state thermal FEA on two geometries using ANSYS Workbench. For an aluminum cylinder (2 in × 10 in), confirmed a linear temperature drop from 300°F to 70°F using path-extracted data. For an aluminum block (20×10×10 in) with 8 distinct vertex temperatures (30–900°F), extracted face-center temperatures and mapped full 3D thermal gradients across all six faces.</p>
-          <div class="project-results">
-            <span class="result-chip">Linear Thermal Profile</span>
-            <span class="result-chip">8-Vertex BCs</span>
-            <span class="result-chip">Face-Center Extraction</span>
-            <span class="result-chip">ANSYS Steady-State Thermal</span>
-            <span class="result-chip">Path Analysis</span>
-          </div>
-        </div>
-        <span class="project-badge">FEM · Thermal</span>
-      </div>
-
-      <div class="project-card">
-        <div>
-          <h3>Structural FEA - Beam & Frame Problems (Deflection, Reactions & Stress)</h3>
-          <div class="project-meta">🏫 CSULB · Spring 2025</div>
-          <p>Solved three structural FEA problems in ANSYS: (1) cantilever bar under axial/lateral loading validated by hand DE solution and manual FEA; (2) simply-supported beam with eccentric 100 lb point load - extracted deflection (0.74 mm max), directional deformation (X-axis), and reaction forces at both supports; (3) 3D portal frame under 100 lbf with total deformation (0.60 ft max) and reaction forces verified at both fixed supports.</p>
-          <div class="project-results">
-            <span class="result-chip">3 Problem Set</span>
-            <span class="result-chip">Hand Calc Verified</span>
-            <span class="result-chip">Reaction Forces</span>
-            <span class="result-chip">Portal Frame 3D</span>
-            <span class="result-chip">ANSYS 2022/2024 R1</span>
-          </div>
-        </div>
-        <span class="project-badge">FEA · Beams & Frames</span>
-      </div>
-
-      <div class="project-card">
-        <div>
-          <h3>Thermo-Structural FEM Analysis of NACA 2412 Airfoil</h3>
-          <div class="project-meta">🏫 CSULB · April 2025</div>
-          <p>Simulated combined aerodynamic and thermal loading on a NACA 2412 airfoil using ANSYS. Applied −3000 Pa pressure to simulate lift loading and a surface temperature increase from 25°C to 150°C with a fixed root boundary condition. Aluminum 6061-T6 material with thermal expansion coefficient was modeled; results captured total deformation (bending + thermal expansion) and von Mises stress distribution reflecting coupled structural and thermal effects.</p>
-          <div class="project-results">
-            <span class="result-chip">NACA 2412</span>
-            <span class="result-chip">Coupled Thermo-Structural</span>
-            <span class="result-chip">−3000 Pa Lift Load</span>
-            <span class="result-chip">25→150°C Thermal</span>
-            <span class="result-chip">Al 6061-T6</span>
-            <span class="result-chip">Von Mises Stress</span>
-          </div>
-        </div>
-        <span class="project-badge">FEM · Aerostructures</span>
-      </div>
-
-      <div class="project-card">
-        <div>
-          <h3>Self-Healing Composites: Chitosan-Linseed Oil Microencapsulation System</h3>
-          <div class="project-meta">🏫 CSULB MAE 522 · May 2025 · Group Project</div>
-          <p>Reviewed and analyzed a bio-based self-healing composite system using chitosan microcapsules (50–200 μm) containing linseed oil as a passive healing agent. Evaluated encapsulation efficiency vs. glutaraldehyde crosslinker volume, assessed healing efficiency via ASTM D5045 fracture toughness testing after 3-point bending damage, and validated crack-sealing via SEM analysis. System manufactured by Resin Transfer Molding (RTM) in a woven glass fiber matrix.</p>
-          <div class="project-results">
-            <span class="result-chip">85% Fracture Recovery</span>
-            <span class="result-chip">48 hr Passive Healing</span>
-            <span class="result-chip">SEM Validated</span>
-            <span class="result-chip">RTM Manufacturing</span>
-            <span class="result-chip">ASTM D5045</span>
-            <span class="result-chip">Biodegradable System</span>
-          </div>
-        </div>
-        <span class="project-badge">Composites · Materials</span>
-      </div>
-
-      <div class="project-card">
-        <div>
-          <h3>Fracture Behavior in 3D-Printed Graphene Structures</h3>
-          <div class="project-meta">🏫 CSULB MAE 561 · Spring 2025 · Group Project</div>
-          <p>Reviewed crack propagation mechanisms in single-layer graphene sheets using molecular dynamics (MD) simulation literature and proposed a methodology for investigating fracture in 3D-printed graphene structures. Analyzed the influence of initial crack length, strain rate, and edge orientation (armchair vs. zigzag) on J-integral, stress intensity factor (Kc), and crack path. Assessed graphene-polymer composite performance with Raman spectroscopy data correlation.</p>
-          <div class="project-results">
-            <span class="result-chip">J-Integral Analysis</span>
-            <span class="result-chip">Armchair vs. Zigzag</span>
-            <span class="result-chip">MD Simulation Review</span>
-            <span class="result-chip">Raman Spectroscopy</span>
-            <span class="result-chip">Kc = ~130 GPa</span>
-            <span class="result-chip">3D-Print Graphene</span>
-          </div>
-        </div>
-        <span class="project-badge">Fracture · Composites</span>
-      </div>
-
     </div>
 
-      <div class="project-card">
-        <div>
-          <h3>SA1: Aircraft 6-DOF Flight Simulation (Simulink)</h3>
-          <div class="project-meta">🏫 CSULB · Controls · SA1</div>
-          <p>Built a full 6-degree-of-freedom aircraft simulation in MATLAB/Simulink using realistic Boeing 747-class inertia parameters (Ixx = 3,090,000, Iyy = 2,940,000, Izz = 5,580,000 slug·ft²). Separated translational and rotational dynamics into decoupled Simulink subsystems. Simulated and plotted body-axis translational velocities (U, V, W), rotational rates (P, Q, R), and kinematic Euler angles (φ, θ, ψ) over a 10-second interval using ODE45-based integration.</p>
-          <div class="project-results">
-            <span class="result-chip">6-DOF Dynamics</span>
-            <span class="result-chip">MATLAB/Simulink</span>
-            <span class="result-chip">Euler Angles</span>
-            <span class="result-chip">Body-Axis Velocities</span>
-            <span class="result-chip">ODE45 Integration</span>
-            <span class="result-chip">747-Class Inertia</span>
+    <div class="filter-tabs">
+      <button class="filter-btn active" onclick="filterProjects('all')">All</button>
+      <button class="filter-btn" onclick="filterProjects('fea')">FEA</button>
+      <button class="filter-btn" onclick="filterProjects('cfd')">CFD</button>
+      <button class="filter-btn" onclick="filterProjects('controls')">Controls</button>
+      <button class="filter-btn" onclick="filterProjects('materials')">Materials</button>
+    </div>
+
+    <div class="projects-grid" id="projects-grid">
+      <div class="project-card" data-category="fea">
+        <div class="project-image">📊</div>
+        <div class="project-content">
+          <div class="project-meta">CSULB · Spring 2025</div>
+          <h3>Plate Under Biaxial Loading</h3>
+          <p>Static structural analysis using ANSYS Workbench. Total deformation 0.58 mm, normal stress ±7.29 MPa with mesh refinement validation.</p>
+          <div class="project-tags">
+            <span class="tag-small">ANSYS</span>
+            <span class="tag-small">Stress Analysis</span>
           </div>
         </div>
-        <span class="project-badge">Flight Dynamics · Simulink</span>
       </div>
 
-      <div class="project-card">
-        <div>
-          <h3>SA2: Nonlinear Dynamics, State-Space & Step Response (MATLAB)</h3>
-          <div class="project-meta">🏫 CSULB · Controls · SA2</div>
-          <p>Five-problem controls assignment covering the full classical pipeline in MATLAB. (1) Found equilibrium points of the nonlinear ODE x-dot = x⁴ - 7x² + 6x symbolically, then simulated four initial conditions via ODE45 and classified stability. (2) Converted two transfer functions to state-space form (A, B, C, D matrices) using MATLAB Control Toolbox. (3-4) Plotted unit step responses of a first-order (12y' + 9y = F) and second-order (y'' + 2y' + 7y = F) system with annotated transient characteristics. (5) Computed eigenvalues/eigenvectors of a 2x2 state matrix and derived the equivalent transfer function G(s) = Y(s)/U(s).</p>
-          <div class="project-results">
-            <span class="result-chip">ODE45 Nonlinear Sim</span>
-            <span class="result-chip">Equilibrium Analysis</span>
-            <span class="result-chip">TF to State-Space</span>
-            <span class="result-chip">Step Response</span>
-            <span class="result-chip">Eigenvalue/Eigenvector</span>
-            <span class="result-chip">MATLAB Control Toolbox</span>
+      <div class="project-card" data-category="fea">
+        <div class="project-image">🔥</div>
+        <div class="project-content">
+          <div class="project-meta">CSULB · Spring 2025</div>
+          <h3>Thermal FEM Analysis</h3>
+          <p>Steady-state thermal FEA on cylinder and block geometries. Temperature profiles from 30°F to 900°F with face-center extraction.</p>
+          <div class="project-tags">
+            <span class="tag-small">ANSYS Thermal</span>
+            <span class="tag-small">Heat Transfer</span>
           </div>
         </div>
-        <span class="project-badge">Controls · MATLAB</span>
       </div>
 
-      <div class="project-card">
-        <div>
-          <h3>SA3: Control System Modelling & Simulation (MATLAB Live Script + Simulink)</h3>
-          <div class="project-meta">🏫 CSULB · Controls · SA3</div>
-          <p>Developed a control system model in a MATLAB Live Script paired with a Simulink block diagram. Defined system dynamics, loaded experimental data from a .mat dataset, and implemented the simulation model in a .slx Simulink file. Analysed system response and validated the model against loaded data, integrating MATLAB computation with Simulink signal flow in a single reproducible workflow.</p>
-          <div class="project-results">
-            <span class="result-chip">MATLAB Live Script</span>
-            <span class="result-chip">Simulink (.slx)</span>
-            <span class="result-chip">Data-Driven Validation</span>
-            <span class="result-chip">System Modelling</span>
-            <span class="result-chip">Signal Flow Analysis</span>
+      <div class="project-card" data-category="fea">
+        <div class="project-image">📐</div>
+        <div class="project-content">
+          <div class="project-meta">CSULB · Spring 2025</div>
+          <h3>Beam & Frame FEA</h3>
+          <p>Cantilever bar, simply-supported beam, and 3D portal frame analysis. Hand-calculated validation with reaction forces verified.</p>
+          <div class="project-tags">
+            <span class="tag-small">ANSYS</span>
+            <span class="tag-small">Beams & Frames</span>
           </div>
         </div>
-        <span class="project-badge">Controls · Simulink</span>
       </div>
 
-      <div class="project-card">
-        <div>
-          <h3>SA4: Lead-Lag Compensator Design for Type-1 Plant</h3>
-          <div class="project-meta">🏫 CSULB · Controls · SA4</div>
-          <p>Designed a combined lead-lag compensator for the plant Gp(s) = 10 / [s(s+2)(s+5)] meeting two hard specs: dominant closed-loop poles at sd = -2 ± j2√3 and velocity constant Kv = 50 (ramp ess = 0.02). Lead compensator placed the zero at s = -1 and used root locus angle geometry to compute the pole at s ≈ -8.8, with gain K_lead ≈ 13.44. Lag compensator used β = 10 (within the allowed 3-10 range) with pole at s = -0.01 and zero at s = -0.10, yielding K_lag ≈ 3.27 > 1. Full compensated system confirmed Kv = 50.000. Simulated root locus, step response (52% overshoot, 5.05 s settling), and ramp error converging to ess = 0.020.</p>
-          <div class="project-results">
-            <span class="result-chip">Lead-Lag Design</span>
-            <span class="result-chip">Root Locus Method</span>
-            <span class="result-chip">Kv = 50 Achieved</span>
-            <span class="result-chip">ess = 0.02</span>
-            <span class="result-chip">Dominant Pole Placement</span>
-            <span class="result-chip">β = 10</span>
-            <span class="result-chip">Ramp Response Verified</span>
-            <span class="result-chip">MATLAB Control Toolbox</span>
+      <div class="project-card" data-category="fea">
+        <div class="project-image">✈️</div>
+        <div class="project-content">
+          <div class="project-meta">CSULB · April 2025</div>
+          <h3>NACA 2412 Thermo-Structural</h3>
+          <p>Coupled aerodynamic + thermal loading. −3000 Pa lift, 25→150°C thermal, Al 6061-T6. Deformation and von Mises mapped.</p>
+          <div class="project-tags">
+            <span class="tag-small">Coupled Analysis</span>
+            <span class="tag-small">Aerostructures</span>
           </div>
         </div>
-        <span class="project-badge">Controls · Compensator Design</span>
       </div>
 
-    <!-- ADD PROJECT BUTTON -->
-    <div style="margin-top:1.6rem;">
-      <div class="add-project-card" onclick="document.getElementById('addProjectModal').classList.add('open')">
-        <div class="add-icon">＋</div>
-        <strong>Drop a New Project</strong>
-        <p>Built something? Log it here.</p>
+      <div class="project-card" data-category="cfd">
+        <div class="project-image">💨</div>
+        <div class="project-content">
+          <div class="project-meta">SREC India · Jan–May 2024</div>
+          <h3>Thermo-Fluid Mechanical System</h3>
+          <p>Conjugate heat transfer in ANSYS Fluent (k-ε model). Lab-validated. +12% airflow, −20% fuel use.</p>
+          <div class="project-tags">
+            <span class="tag-small">Fluent CFD</span>
+            <span class="tag-small">Thermal</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card" data-category="cfd">
+        <div class="project-image">🚀</div>
+        <div class="project-content">
+          <div class="project-meta">CFD Research</div>
+          <h3>Scramjet Diamond Airfoil Study</h3>
+          <p>Parametric CFD at Mach 2.0. T/C ratio influence on shock compression. t/c=0.3 optimal for auto-ignition.</p>
+          <div class="project-tags">
+            <span class="tag-small">COMSOL</span>
+            <span class="tag-small">Compressible CFD</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card" data-category="materials">
+        <div class="project-image">🔬</div>
+        <div class="project-content">
+          <div class="project-meta">CSULB MAE 522 · May 2025</div>
+          <h3>Self-Healing Composites</h3>
+          <p>Bio-based chitosan-linseed oil system. 85% fracture recovery, 48 hr passive healing, SEM validated.</p>
+          <div class="project-tags">
+            <span class="tag-small">Composites</span>
+            <span class="tag-small">Materials</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card" data-category="materials">
+        <div class="project-image">💎</div>
+        <div class="project-content">
+          <div class="project-meta">CSULB MAE 561 · Spring 2025</div>
+          <h3>Fracture in 3D-Printed Graphene</h3>
+          <p>Crack propagation analysis via MD simulation. Armchair vs. zigzag orientation. Kc ≈ 130 GPa.</p>
+          <div class="project-tags">
+            <span class="tag-small">Fracture Mechanics</span>
+            <span class="tag-small">3D Printing</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card" data-category="controls">
+        <div class="project-image">📈</div>
+        <div class="project-content">
+          <div class="project-meta">CSULB · Controls</div>
+          <h3>6-DOF Flight Dynamics</h3>
+          <p>Boeing 747-class inertia. Translational & rotational dynamics decoupled. Body-axis velocities and Euler angles.</p>
+          <div class="project-tags">
+            <span class="tag-small">Simulink</span>
+            <span class="tag-small">Dynamics</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card" data-category="controls">
+        <div class="project-image">⚙️</div>
+        <div class="project-content">
+          <div class="project-meta">CSULB · Controls</div>
+          <h3>Nonlinear Dynamics & State-Space</h3>
+          <p>Equilibrium analysis, TF→state-space conversion, step responses, eigenvalue analysis in MATLAB.</p>
+          <div class="project-tags">
+            <span class="tag-small">MATLAB</span>
+            <span class="tag-small">Control Theory</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
-
-<!-- ADD PROJECT MODAL -->
-<div class="modal-overlay" id="addProjectModal">
-  <div class="modal">
-    <h3>🚀 Add New Project</h3>
-    <div class="form-group">
-      <label>Project Title</label>
-      <input type="text" id="proj-title" placeholder="e.g. Landing Gear FEA Analysis"/>
-    </div>
-    <div class="form-group">
-      <label>Category / Badge</label>
-      <input type="text" id="proj-badge" placeholder="e.g. FEA · Structures"/>
-    </div>
-    <div class="form-group">
-      <label>Location & Date</label>
-      <input type="text" id="proj-meta" placeholder="e.g. CSULB · Jan – May 2026"/>
-    </div>
-    <div class="form-group">
-      <label>Description</label>
-      <textarea id="proj-desc" placeholder="Describe what you did, tools used, methods applied..."></textarea>
-    </div>
-    <div class="form-group">
-      <label>Key Results (comma-separated)</label>
-      <input type="text" id="proj-results" placeholder="e.g. 20% weight reduction, ANSYS validated, Python scripted"/>
-    </div>
-    <div class="modal-btns">
-      <button class="btn-cancel" onclick="document.getElementById('addProjectModal').classList.remove('open')">Cancel</button>
-      <button class="btn-save" onclick="addProject()">Save Project</button>
-    </div>
-  </div>
-</div>
 
 <hr class="divider">
 
 <!-- EXPERIENCE -->
 <section id="experience">
   <div class="section-inner">
-    <div class="section-label">// Where I Have Been</div>
-    <h2 class="section-title">Time in the Field.</h2>
+    <div class="section-label">Background</div>
+    <h2 class="section-title">Professional Experience</h2>
     <div class="timeline">
       <div class="timeline-item">
         <div class="timeline-date">Jan 2024</div>
-        <div class="timeline-dot"></div>
         <div class="timeline-content">
           <h3>Air Traffic Control Intern</h3>
           <div class="company">Coimbatore International Airport, India</div>
           <ul>
-            <li>Mapped and analyzed safety-critical operational workflows against ICAO reliability and risk mitigation standards; identified procedural failure points and authored updated SOPs to reduce human-factor error risk.</li>
-            <li>Restructured technical documentation architecture for ATC systems, reducing trainee onboarding time by 20% and improving procedural compliance traceability across shift handoffs.</li>
+            <li>Analyzed safety-critical workflows against ICAO reliability standards and authored updated SOPs.</li>
+            <li>Restructured technical documentation, reducing trainee onboarding time by 20%.</li>
           </ul>
         </div>
       </div>
       <div class="timeline-item">
-        <div class="timeline-date">Feb – Mar 2024</div>
-        <div class="timeline-dot"></div>
+        <div class="timeline-date">Feb–Mar 2024</div>
         <div class="timeline-content">
-          <h3>Subject Matter Expert (Aeronautical Consultant)</h3>
+          <h3>Aeronautical Consultant</h3>
           <div class="company">Softusvista</div>
           <ul>
-            <li>Enhanced aeronautical engineering calculator collection on calculatoratoz.com, streamlining user experience and crafting accessible user-facing engineering tools.</li>
+            <li>Enhanced aeronautical engineering calculator collection on calculatoratoz.com.</li>
           </ul>
         </div>
       </div>
       <div class="timeline-item">
-        <div class="timeline-date">Jan – Apr 2023</div>
-        <div class="timeline-dot"></div>
+        <div class="timeline-date">Jan–Apr 2023</div>
         <div class="timeline-content">
           <h3>Technical Intern</h3>
           <div class="company">Dot World Technologies, India</div>
           <ul>
-            <li>Executed component-level mechanical integration using CATIA V5 and SolidWorks applying DFM and GD&T principles; tolerance stack-up analysis improved build efficiency by 30%.</li>
-            <li>Performed functional bench testing and sensor data validation; applied root cause analysis (5-Why, fishbone) to identify failure modes and close non-conformances.</li>
-            <li>Supported FMEA and risk assessment for thermal and mechanical sub-systems; authored test reports and traceability documentation for component qualification sign-off.</li>
+            <li>Mechanical integration (CATIA V5, SolidWorks) with DFM/GD&T; improved build efficiency 30%.</li>
+            <li>Bench testing, root cause analysis (5-Why, fishbone), FMEA support for component qualification.</li>
           </ul>
         </div>
       </div>
@@ -889,27 +1238,41 @@
 <!-- EDUCATION & CERTS -->
 <section id="education">
   <div class="section-inner">
-    <div class="section-label">Education & Credentials</div>
+    <div class="section-label">Credentials</div>
     <h2 class="section-title">Education & Certifications</h2>
     <div class="edu-grid">
       <div class="edu-card">
-        <div class="skill-icon">🎓</div>
         <h4>M.S. Aerospace Engineering</h4>
         <div class="school">California State University, Long Beach</div>
         <div class="period">Aug 2024 – May 2026 · Structures & Materials</div>
       </div>
       <div class="edu-card">
-        <div class="skill-icon">🎓</div>
         <h4>B.E. Aeronautical Engineering</h4>
         <div class="school">Sri Ramakrishna Engineering College, India</div>
         <div class="period">Aug 2020 – Jun 2024</div>
       </div>
     </div>
     <div class="certs-grid">
-      <div class="cert-card"><div class="cert-icon">🏅</div><div><h4>Certified SOLIDWORKS Associate</h4><p>CSWA - 3D CAD Proficiency</p></div></div>
-      <div class="cert-card"><div class="cert-icon">🏅</div><div><h4>3DEXPERIENCE Mechanical Designer</h4><p>Professional - Dassault Systèmes</p></div></div>
-      <div class="cert-card"><div class="cert-icon">🏅</div><div><h4>MATLAB Onramp</h4><p>MathWorks Certified</p></div></div>
-      <div class="cert-card"><div class="cert-icon">🏅</div><div><h4>Urban Air Mobility</h4><p>Industry Certification</p></div></div>
+      <div class="cert-card">
+        <div class="cert-icon">🏅</div>
+        <h4>Certified SOLIDWORKS Associate</h4>
+        <p>CSWA - 3D CAD Proficiency</p>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">🏅</div>
+        <h4>3DEXPERIENCE Mechanical Designer</h4>
+        <p>Dassault Systèmes Professional</p>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">🏅</div>
+        <h4>MATLAB Onramp</h4>
+        <p>MathWorks Certified</p>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">🏅</div>
+        <h4>Urban Air Mobility</h4>
+        <p>Industry Certification</p>
+      </div>
     </div>
   </div>
 </section>
@@ -920,72 +1283,39 @@
 <section id="contact">
   <div class="section-inner">
     <div class="contact-box">
-      <!-- Mini rocket deco -->
-      <svg style="width:48px;margin-bottom:1rem;display:block;margin-left:auto;margin-right:auto" viewBox="0 0 60 100" xmlns="http://www.w3.org/2000/svg">
-        <ellipse cx="30" cy="94" rx="10" ry="8" fill="#ff6b35" opacity=".7"/>
-        <ellipse cx="30" cy="90" rx="6" ry="5" fill="#ffd93d"/>
-        <path d="M14 76 Q14 60 30 30 Q46 60 46 76 Z" fill="#0c1530" stroke="#00d4ff" stroke-width="1.5"/>
-        <path d="M14 60 Q14 38 30 10 Q46 38 46 60 Z" fill="#00d4ff" opacity=".85"/>
-        <circle cx="30" cy="48" r="7" fill="#080f24" stroke="#ff6b35" stroke-width="1.5"/>
-        <circle cx="28" cy="46" r="2" fill="#fff" opacity=".7"/>
-        <path d="M14 76 L4 90 L14 82 Z" fill="#ff6b35"/><path d="M46 76 L56 90 L46 82 Z" fill="#ff6b35"/>
-      </svg>
-      <h2><span style="color:var(--cyan)">Hire me</span> before someone else does.</h2>
-      <p>I am an aerospace FEA engineer who knows the difference between a mesh sensitivity study and a guess. Fremont, CA. Open to relocation for the right program.</p>
+      <h2>Let's Work Together</h2>
+      <p>I'm actively seeking opportunities in structural FEA, composite aerostructures, and impact analysis. Get in touch to discuss your project or engineering challenge.</p>
       <div class="contact-links">
         <a href="mailto:Sastikailango@gmail.com" class="contact-link">✉️ Email</a>
         <a href="https://www.linkedin.com/in/sastikailango" target="_blank" class="contact-link">🔗 LinkedIn</a>
-        <a href="tel:+16693386126" class="contact-link">📞 +1 669 338 6126</a>
+        <a href="tel:+16693386126" class="contact-link">📞 Call</a>
       </div>
     </div>
   </div>
 </section>
 
 <footer>
-  <p>© 2026 Sastika Ilango · Aerospace Engineer · Fremont, CA · Built with passion for structures & flight 🚀</p>
+  <p>© 2025 Sastika Ilango · Aerospace Engineer · Fremont, CA · M.S. CSULB</p>
 </footer>
 
 <script>
-  // Generate stars
-  const starsEl = document.getElementById('stars');
-  for(let i=0;i<120;i++){
-    const s=document.createElement('div');
-    s.className='star';
-    const sz=Math.random()*2.5+0.5;
-    s.style.cssText=`width:${sz}px;height:${sz}px;left:${Math.random()*100}%;top:${Math.random()*100}%;--d:${(Math.random()*4+2).toFixed(1)}s;--delay:${(Math.random()*5).toFixed(1)}s;opacity:${Math.random()*.5+.1}`;
-    starsEl.appendChild(s);
+  function filterProjects(category) {
+    const cards = document.querySelectorAll('.project-card');
+    const btns = document.querySelectorAll('.filter-btn');
+    
+    btns.forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+    
+    cards.forEach(card => {
+      if (category === 'all' || card.dataset.category.includes(category)) {
+        card.style.display = 'flex';
+        setTimeout(() => card.style.opacity = '1', 10);
+      } else {
+        card.style.opacity = '0';
+        setTimeout(() => card.style.display = 'none', 300);
+      }
+    });
   }
-
-  // Add project function
-  function addProject(){
-    const title=document.getElementById('proj-title').value.trim();
-    const badge=document.getElementById('proj-badge').value.trim();
-    const meta=document.getElementById('proj-meta').value.trim();
-    const desc=document.getElementById('proj-desc').value.trim();
-    const resultsRaw=document.getElementById('proj-results').value.trim();
-    if(!title){alert('Please enter a project title.');return;}
-    const chips=resultsRaw?resultsRaw.split(',').map(r=>`<span class="result-chip">${r.trim()}</span>`).join(''):'';
-    const card=document.createElement('div');
-    card.className='project-card';
-    card.innerHTML=`
-      <div>
-        <h3>${title}</h3>
-        ${meta?`<div class="project-meta">🏫 ${meta}</div>`:''}
-        <p>${desc||'No description provided.'}</p>
-        ${chips?`<div class="project-results">${chips}</div>`:''}
-      </div>
-      ${badge?`<span class="project-badge">${badge}</span>`:''}
-    `;
-    document.getElementById('projects-grid').appendChild(card);
-    // Reset
-    ['proj-title','proj-badge','proj-meta','proj-desc','proj-results'].forEach(id=>document.getElementById(id).value='');
-    document.getElementById('addProjectModal').classList.remove('open');
-  }
-
-  // Close modal on overlay click
-  document.getElementById('addProjectModal').addEventListener('click',function(e){
-    if(e.target===this)this.classList.remove('open');
-  });
 </script>
 </body>
 </html>
