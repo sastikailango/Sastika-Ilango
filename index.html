@@ -468,8 +468,10 @@
 
   .featured-image {
     width: 100%;
-    aspect-ratio: 16/10;
+    height: 280px;
     background: linear-gradient(135deg, #f0f2f5 0%, #e2e8f0 100%);
+    background-size: cover !important;
+    background-position: center !important;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -547,6 +549,7 @@
     flex-direction: column;
     height: 100%;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    padding: 1.5rem;
   }
 
   .project-card:hover {
@@ -557,8 +560,10 @@
 
   .project-image {
     width: 100%;
-    aspect-ratio: 16/9;
+    height: 200px;
     background: linear-gradient(135deg, #f0f2f5 0%, #e2e8f0 100%);
+    background-size: cover !important;
+    background-position: center !important;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -568,7 +573,6 @@
   }
 
   .project-content {
-    padding: 1.5rem;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
@@ -1017,296 +1021,4 @@
     <div class="section-label">Portfolio</div>
     <h2 class="section-title">Featured Work</h2>
 
-    <div class="featured-grid">
-      <div class="featured-card">
-       <div class="featured-image" style="background-image:url('Fig14-Debonding Evolution of 2 riverts.png'); background-size:cover; background-position:center;"></div>
-        <div class="featured-content">
-          <span class="featured-badge">Thesis · Composites · Impact</span>
-          <h3>Riveted Composite Structures</h3>
-          <p><strong>CSULB Thesis Study:</strong> Numerical investigation of rivet configuration effects on interlaminar delamination in GFRP–Nomex sandwich panels. Two case studies using ANSYS ACP (static, CZM) and LS-DYNA explicit dynamics (900 m/s impact).</p>
-          <div class="featured-results">
-           <span class="result-chip">ANSYS ACP + CZM</span>
-           <span class="result-chip">LS-DYNA Explicit</span>
-           <span class="result-chip">−70% Debond</span>
-</div>
-<a href="Riverted Joints.pdf" target="_blank" class="btn btn-primary" style="margin-top: 1rem; display: inline-block;">
-  📥 Download Full Thesis
-</a>
-        </div>
-      </div>
-
-      <div class="featured-card">
-        <div class="featured-image">✈️</div>
-        <div class="featured-content">
-          <span class="featured-badge">Controls · Flight Dynamics</span>
-          <h3>6-DOF Aircraft Flight Simulation</h3>
-          <p><strong>MATLAB/Simulink Model:</strong> Full 6-degree-of-freedom aircraft dynamics using Boeing 747 inertia parameters. Decoupled translational and rotational dynamics with body-axis velocity and Euler angle integration.</p>
-          <div class="featured-results">
-            <span class="result-chip">MATLAB/Simulink</span>
-            <span class="result-chip">ODE45 Integration</span>
-            <span class="result-chip">747-class Inertia</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="filter-tabs">
-      <button class="filter-btn active" onclick="filterProjects('all')">All</button>
-      <button class="filter-btn" onclick="filterProjects('fea')">FEA</button>
-      <button class="filter-btn" onclick="filterProjects('cfd')">CFD</button>
-      <button class="filter-btn" onclick="filterProjects('controls')">Controls</button>
-      <button class="filter-btn" onclick="filterProjects('materials')">Materials</button>
-    </div>
-
-    <div class="projects-grid" id="projects-grid">
-<div class="project-card" data-category="fea">
-  <div class="project-image" style="background-image:url('plate-total-deformation.png'); background-size:cover; background-position:center;"></div>
-  <div class="project-content">
-    <div class="project-meta">CSULB · Spring 2025</div>
-    <h3>Plate Under Biaxial Loading</h3>
-    <p>Static structural analysis using ANSYS Workbench. Total deformation 0.58 mm, normal stress ±7.29 MPa with mesh refinement validation.</p>
-    <div class="project-tags">
-      <span class="tag-small">ANSYS</span>
-      <span class="tag-small">Stress Analysis</span>
-    </div>
-  </div>
-</div>
-</div>
-
-<div class="project-card" data-category="fea">
-  <div class="project-image" style="background-image:url('thermal-temperature.png'); background-size:cover; background-position:center;"></div>
-  <div class="project-content">
-    <div class="project-meta">CSULB · Spring 2025</div>
-    <h3>Thermal FEM Analysis</h3>
-    <p>Two steady-state thermal simulations: (1) Aluminum cylinder (2" dia, 10" length) with 300°F–70°F boundary conditions showing linear temperature drop; (2) Aluminum block (20×10×10 in) with 8-vertex variable temperatures (30°F–900°F) demonstrating 3D heat distribution.</p>
-    <div class="project-tags">
-      <span class="tag-small">ANSYS Thermal</span>
-      <span class="tag-small">Heat Transfer</span>
-    </div>
-  </div>
-</div>
-
-      <div class="project-card" data-category="fea">
-        <div class="project-image">✈️</div>
-        <div class="project-content">
-          <div class="project-meta">CSULB · April 2025</div>
-          <h3>NACA 2412 Thermo-Structural</h3>
-          <p>Coupled aerodynamic + thermal loading. −3000 Pa lift, 25→150°C thermal, Al 6061-T6. Deformation and von Mises mapped.</p>
-          <div class="project-tags">
-            <span class="tag-small">Coupled Analysis</span>
-            <span class="tag-small">Aerostructures</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card" data-category="cfd">
-        <div class="project-image">💨</div>
-        <div class="project-content">
-          <div class="project-meta">SREC India · Jan–May 2024</div>
-          <h3>Thermo-Fluid Mechanical System</h3>
-          <p>Conjugate heat transfer in ANSYS Fluent (k-ε model). Lab-validated. +12% airflow, −20% fuel use.</p>
-          <div class="project-tags">
-            <span class="tag-small">Fluent CFD</span>
-            <span class="tag-small">Thermal</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card" data-category="cfd">
-        <div class="project-image">🚀</div>
-        <div class="project-content">
-          <div class="project-meta">CFD Research</div>
-          <h3>Scramjet Diamond Airfoil Study</h3>
-          <p>Parametric CFD at Mach 2.0. T/C ratio influence on shock compression. t/c=0.3 optimal for auto-ignition.</p>
-          <div class="project-tags">
-            <span class="tag-small">COMSOL</span>
-            <span class="tag-small">Compressible CFD</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card" data-category="materials">
-        <div class="project-image">🔬</div>
-        <div class="project-content">
-          <div class="project-meta">CSULB MAE 522 · May 2025</div>
-          <h3>Self-Healing Composites</h3>
-          <p>Bio-based chitosan-linseed oil system. 85% fracture recovery, 48 hr passive healing, SEM validated.</p>
-          <div class="project-tags">
-            <span class="tag-small">Composites</span>
-            <span class="tag-small">Materials</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card" data-category="materials">
-        <div class="project-image">💎</div>
-        <div class="project-content">
-          <div class="project-meta">CSULB MAE 561 · Spring 2025</div>
-          <h3>Fracture in 3D-Printed Graphene</h3>
-          <p>Crack propagation analysis via MD simulation. Armchair vs. zigzag orientation. Kc ≈ 130 GPa.</p>
-          <div class="project-tags">
-            <span class="tag-small">Fracture Mechanics</span>
-            <span class="tag-small">3D Printing</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card" data-category="controls">
-        <div class="project-image">📈</div>
-        <div class="project-content">
-          <div class="project-meta">CSULB · Controls</div>
-          <h3>6-DOF Flight Dynamics</h3>
-          <p>Boeing 747-class inertia. Translational & rotational dynamics decoupled. Body-axis velocities and Euler angles.</p>
-          <div class="project-tags">
-            <span class="tag-small">Simulink</span>
-            <span class="tag-small">Dynamics</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card" data-category="controls">
-        <div class="project-image">⚙️</div>
-        <div class="project-content">
-          <div class="project-meta">CSULB · Controls</div>
-          <h3>Nonlinear Dynamics & State-Space</h3>
-          <p>Equilibrium analysis, TF→state-space conversion, step responses, eigenvalue analysis in MATLAB.</p>
-          <div class="project-tags">
-            <span class="tag-small">MATLAB</span>
-            <span class="tag-small">Control Theory</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<hr class="divider">
-
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="section-inner">
-    <div class="section-label">Background</div>
-    <h2 class="section-title">Professional Experience</h2>
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-date">Jan 2024</div>
-        <div class="timeline-content">
-          <h3>Air Traffic Control Intern</h3>
-          <div class="company">Coimbatore International Airport, India</div>
-          <ul>
-            <li>Analyzed safety-critical workflows against ICAO reliability standards and authored updated SOPs.</li>
-            <li>Restructured technical documentation, reducing trainee onboarding time by 20%.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-date">Feb–Mar 2024</div>
-        <div class="timeline-content">
-          <h3>Aeronautical Consultant</h3>
-          <div class="company">Softusvista</div>
-          <ul>
-            <li>Enhanced aeronautical engineering calculator collection on calculatoratoz.com.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-date">Jan–Apr 2023</div>
-        <div class="timeline-content">
-          <h3>Technical Intern</h3>
-          <div class="company">Dot World Technologies, India</div>
-          <ul>
-            <li>Mechanical integration (CATIA V5, SolidWorks) with DFM/GD&T; improved build efficiency 30%.</li>
-            <li>Bench testing, root cause analysis (5-Why, fishbone), FMEA support for component qualification.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<hr class="divider">
-
-<!-- EDUCATION & CERTS -->
-<section id="education">
-  <div class="section-inner">
-    <div class="section-label">Credentials</div>
-    <h2 class="section-title">Education & Certifications</h2>
-    <div class="edu-grid">
-      <div class="edu-card">
-        <h4>M.S. Aerospace Engineering</h4>
-        <div class="school">California State University, Long Beach</div>
-        <div class="period">Aug 2024 – May 2026 · Structures & Materials</div>
-      </div>
-      <div class="edu-card">
-        <h4>B.E. Aeronautical Engineering</h4>
-        <div class="school">Sri Ramakrishna Engineering College, India</div>
-        <div class="period">Aug 2020 – Jun 2024</div>
-      </div>
-    </div>
-    <div class="certs-grid">
-      <div class="cert-card">
-        <div class="cert-icon">🏅</div>
-        <h4>Certified SOLIDWORKS Associate</h4>
-        <p>CSWA - 3D CAD Proficiency</p>
-      </div>
-      <div class="cert-card">
-        <div class="cert-icon">🏅</div>
-        <h4>3DEXPERIENCE Mechanical Designer</h4>
-        <p>Dassault Systèmes Professional</p>
-      </div>
-      <div class="cert-card">
-        <div class="cert-icon">🏅</div>
-        <h4>MATLAB Onramp</h4>
-        <p>MathWorks Certified</p>
-      </div>
-      <div class="cert-card">
-        <div class="cert-icon">🏅</div>
-        <h4>Urban Air Mobility</h4>
-        <p>Industry Certification</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<hr class="divider">
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="section-inner">
-    <div class="contact-box">
-      <h2>Let's Work Together</h2>
-      <p>I'm actively seeking opportunities in structural FEA, composite aerostructures, and impact analysis. Get in touch to discuss your project or engineering challenge.</p>
-      <div class="contact-links">
-        <a href="mailto:Sastikailango@gmail.com" class="contact-link">✉️ Email</a>
-        <a href="https://www.linkedin.com/in/sastikailango" target="_blank" class="contact-link">🔗 LinkedIn</a>
-        <a href="tel:+16693386126" class="contact-link">📞 Call</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <p>© 2025 Sastika Ilango · Aerospace Engineer · Fremont, CA · M.S. CSULB</p>
-</footer>
-
-<script>
-  function filterProjects(category) {
-    const cards = document.querySelectorAll('.project-card');
-    const btns = document.querySelectorAll('.filter-btn');
-    
-    btns.forEach(btn => btn.classList.remove('active'));
-    event.target.classList.add('active');
-    
-    cards.forEach(card => {
-      if (category === 'all' || card.dataset.category.includes(category)) {
-        card.style.display = 'flex';
-        setTimeout(() => card.style.opacity = '1', 10);
-      } else {
-        card.style.opacity = '0';
-        setTimeout(() => card.style.display = 'none', 300);
-      }
-    });
-  }
-</script>
-</body>
-</html>
+    <div
